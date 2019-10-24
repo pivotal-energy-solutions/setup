@@ -1,18 +1,18 @@
 BRANCH=bin/setup
 GITHUB_TOKEN=${1:-GITHUB_TOKEN}
 
-if [[ -e axis ]]; then
-  if [[ -e bin/django ]]; then
-    bin/setup
-  else
-    axis/bin/setup
-  fi
-else
-  echo
-  echo "Cloning setup repository..."
-  git clone https://github.com/pivotal-energy-solutions/setup.git
+if [[ -e bin/django ]]; then
+  cd ..
+fi
+git clone https://github.com/pivotal-energy-solutions/setup.git
+cd setup
+git fetch
+git pull
+cd ..
 
-  echo
+if [[ -e axis ]]; then
+  axis/bin/setup
+else
   echo "NOTE: Use ./setup/axis to continue this process if anything goes wrong!"
 
   if ! [ "x$GITHUB_TOKEN" == "x" ]; then
