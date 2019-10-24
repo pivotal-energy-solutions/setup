@@ -2,7 +2,9 @@ GITHUB_TOKEN=${1:-GITHUB_TOKEN}
 
 if ! [ "x$GITHUB_TOKEN" == "x" ]; then
   echo "Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`":
-  echo "\n    https://github.com/settings/tokens\n"
+  echo
+  echo "    https://github.com/settings/tokens"
+  echo
   printf "Personal access token: "
   stty -echo
   read GITHUB_TOKEN
