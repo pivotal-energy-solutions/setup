@@ -1,4 +1,9 @@
-TOKEN=${1:-GITHUB_TOKEN}
+GITHUB_TOKEN=${1:-GITHUB_TOKEN}
 
-echo "curl -fsSL https://${TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup"
+if ! [ "x$GITHUB_TOKEN" == "x" ]; then
+  echo "Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`:
+  echo "\n    https://github.com/settings/tokens\n"
+  read -s -p "Personal access token: " GITHUB_TOKEN
+fi
+
 bash <(curl -fsSL https://${TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup)
