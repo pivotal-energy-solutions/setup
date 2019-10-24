@@ -1,5 +1,7 @@
 ## axis
 
+Use this command to install all currently required software.
+
 For more information, see https://github.com/pivotal-energy-solutions/axis/wiki/GettingStarted#new-instructions-wip
 
 ```shell
