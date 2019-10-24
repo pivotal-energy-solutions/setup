@@ -12,4 +12,6 @@ if ! [ "x$GITHUB_TOKEN" == "x" ]; then
   printf "\n"
 fi
 
+echo $GITHUB_TOKEN
+
 bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup)
