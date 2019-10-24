@@ -18,7 +18,7 @@ else
   echo "NOTE: Use ./setup/axis to continue this process if anything goes wrong!"
 
   if ! [ "x$GITHUB_TOKEN" == "x" ]; then
-    echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`':
+    echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`'
     echo
     echo '    https://github.com/settings/tokens'
     echo
