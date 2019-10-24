@@ -14,19 +14,22 @@ cd ..
 
 if [[ -e axis ]]; then
   axis/bin/setup
-else
-  echo "NOTE: Use ./setup/axis to continue this process if anything goes wrong!"
-
-  if ! [ "x$GITHUB_TOKEN" == "x" ]; then
-    echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`'
-    echo
-    echo '    https://github.com/settings/tokens'
-    echo
-    printf "Personal access token: "
-    stty -echo
-    read GITHUB_TOKEN
-    stty echo
-    printf "\n"
-  fi
-  bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/${BRANCH}/bin/setup)
+  exit 0
 fi
+
+echo
+echo "NOTE: Use ./setup/axis to continue this process if anything goes wrong!"
+
+if ! [ "x$GITHUB_TOKEN" == "x" ]; then
+  echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`'
+  echo
+  echo '    https://github.com/settings/tokens'
+  echo
+  printf "Personal access token: "
+  stty -echo
+  read GITHUB_TOKEN
+  stty echo
+  printf "\n"
+fi
+
+bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/${BRANCH}/bin/setup)
