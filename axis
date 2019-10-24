@@ -4,7 +4,9 @@ GITHUB_TOKEN=${1:-GITHUB_TOKEN}
 if [[ -e bin/django ]]; then
   cd ..
 fi
-git clone https://github.com/pivotal-energy-solutions/setup.git
+if ! [[ -e setup ]]; then
+  git clone https://github.com/pivotal-energy-solutions/setup.git
+fi
 cd setup
 git fetch
 git pull
