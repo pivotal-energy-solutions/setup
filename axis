@@ -1,8 +1,20 @@
 BRANCH=bin/setup
 GITHUB_TOKEN=${1:-GITHUB_TOKEN}
 
-if ! [[ -e setup ]]; then
+if [[ -e axis ]]; then
+  if [[ -e bin/django ]]; then
+    bin/setup
+  else
+    axis/bin/setup
+  fi
+else
+  echo
+  echo "Cloning setup repository..."
   git clone https://github.com/pivotal-energy-solutions/setup.git
+
+  echo
+  echo "NOTE: Use ./setup/axis to continue this process if anything goes wrong!"
+
   if ! [ "x$GITHUB_TOKEN" == "x" ]; then
     echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`':
     echo
@@ -14,5 +26,5 @@ if ! [[ -e setup ]]; then
     stty echo
     printf "\n"
   fi
+  bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/${BRANCH}/bin/setup)
 fi
-bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/${BRANCH}/bin/setup)
