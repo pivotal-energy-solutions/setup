@@ -6,4 +6,4 @@ if ! [ "x$GITHUB_TOKEN" == "x" ]; then
   read -s -p "Personal access token: " GITHUB_TOKEN
 fi
 
-bash <(curl -fsSL https://${TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup)
+bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup)
