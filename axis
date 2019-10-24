@@ -1,16 +1,18 @@
 BRANCH=bin/setup
 GITHUB_TOKEN=${1:-GITHUB_TOKEN}
 
-if ! [ "x$GITHUB_TOKEN" == "x" ]; then
-  echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`':
-  echo
-  echo '    https://github.com/settings/tokens'
-  echo
-  printf "Personal access token: "
-  stty -echo
-  read GITHUB_TOKEN
-  stty echo
-  printf "\n"
+if ! [[ -e setup ]]; then
+  git clone https://github.com/pivotal-energy-solutions/setup.git
+  if ! [ "x$GITHUB_TOKEN" == "x" ]; then
+    echo 'Generate a GitHub personal access token on the following page with full private access to `pivotal-energy-solutions/axis`':
+    echo
+    echo '    https://github.com/settings/tokens'
+    echo
+    printf "Personal access token: "
+    stty -echo
+    read GITHUB_TOKEN
+    stty echo
+    printf "\n"
+  fi
 fi
-
 bash <(curl -fsSL https://${GITHUB_TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/${BRANCH}/bin/setup)
