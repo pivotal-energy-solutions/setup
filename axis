@@ -1,3 +1,4 @@
 TOKEN=${1:-GITHUB_TOKEN}
 
+echo "curl -fsSL https://${TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup"
 bash <(curl -fsSL https://${TOKEN}@raw.githubusercontent.com/pivotal-energy-solutions/axis/master/bin/setup)
